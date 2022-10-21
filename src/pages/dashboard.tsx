@@ -1,10 +1,10 @@
 import React from 'react';
 
 import TitlePage from '@/components/UI/TitlePage';
-import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { useAppSelector } from '@/store/hooks';
 
 export default function Dashboard() {
-  const { dataGenres, dataMovies, error, loading } = useAppSelector((state) => state.movie);
+  const { dataGenres, dataMovies } = useAppSelector((state) => state.movie);
   return (
     <>
       <TitlePage title="Dashboard" />

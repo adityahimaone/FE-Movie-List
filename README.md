@@ -1,20 +1,13 @@
-# Boiler Plate
+# Movie List
 
-Vite + React + TypeScript + TailwindCSS + ESLint + Prettier + Husky + Lint-Staged
-
-## Features
-
-- 🦾 Up to date libraries version and their features
-- 🔎 Pre-configured and extensible ESLint configuration without wrong and unused rules designed for old React versions
-- 💅 Pre-configured and extensible Prettier configuration
-- 🔬 Git hooks for code formatting and linting pre-commit
+Movie DB API
 
 ## Usage
 
 ```bash
-npx degit adityahimaone/vite-react-ts-template my-app
+npx degit adityahimaone/FE-Movie-List my-app
 
-cd my-app
+cd FE-Movie-List
 
 # Required if you want a repository and work with Git hooks
 git init
