@@ -2,7 +2,11 @@ import { FilmIcon, HomeIcon, VideoCameraIcon } from '@heroicons/react/24/solid';
 import { Sidebar } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
 
-export default function SidebarMain(): JSX.Element {
+interface IProps {
+  sidebarShow: boolean;
+}
+
+export default function SidebarMain({ sidebarShow }: IProps): JSX.Element {
   const navigate = useNavigate();
 
   const redirect = (path: string) => () => {
@@ -15,6 +19,7 @@ export default function SidebarMain(): JSX.Element {
         borderRadius: '0',
       }}
       aria-label="Default sidebar example"
+      hidden={!sidebarShow}
     >
       <Sidebar.Items>
         <Sidebar.ItemGroup>

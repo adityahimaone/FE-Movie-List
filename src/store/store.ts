@@ -5,6 +5,8 @@ import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import thunk, { ThunkDispatch } from 'redux-thunk';
 
+import movie from './movieSlice';
+
 const logger = createLogger();
 
 const persistConfig = {
@@ -12,7 +14,9 @@ const persistConfig = {
   storage,
 };
 
-const reducers = combineReducers({});
+const reducers = combineReducers({
+  movie,
+});
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 

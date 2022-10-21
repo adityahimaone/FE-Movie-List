@@ -9,21 +9,20 @@ export interface IErrorMessages {
 }
 
 export interface IInitialStateMovieSlice extends IInitialState {
-  dataGenres: IGenres;
+  dataGenres: IGenre[];
   dataMovies: IMovies;
   dataMovie: IMovieDetail;
 }
 
+export interface IGenre {
+  id: number;
+  name: string;
+}
 export interface IGenres {
-  genres: [
-    {
-      id: number;
-      name: string;
-    },
-  ];
+  genres: [IGenre];
 }
 
-interface IMovieBase {
+export interface IMovieBase {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -76,5 +75,7 @@ export interface IMovies {
     minimum: string;
   };
   page: number;
+  total_pages: number;
+  total_results: number;
   results: [IMovieBase];
 }

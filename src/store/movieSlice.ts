@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 
-import { IInitialStateMovieSlice, IMovies, IGenres, IMovieDetail, IErrorMessages } from '@/types/types-redux';
+import { IInitialStateMovieSlice, IMovies, IGenre, IGenres, IMovieDetail, IErrorMessages } from '@/types/types-redux';
 import axiosCustom from '@/utils/axios-custom';
 
 const key = '2fccde01a371b106b09a241d6d1d5b49';
@@ -9,7 +9,7 @@ const key = '2fccde01a371b106b09a241d6d1d5b49';
 const initialState: IInitialStateMovieSlice = {
   loading: false,
   error: null,
-  dataGenres: {} as IGenres,
+  dataGenres: [] as IGenre[],
   dataMovies: {} as IMovies,
   dataMovie: {} as IMovieDetail,
 };
@@ -24,7 +24,7 @@ export const getDataMovies = createAsyncThunk('movie/getDataMovies', async (page
   return response.data;
 });
 
-export const getDetailMovie = createAsyncThunk('movie/getDetailMovie', async (id: number) => {
+export const getDetailMovie = createAsyncThunk('movie/getDetailMovie', async (id: string) => {
   const response = await axiosCustom('get', `/movie/${id}?api_key=${key}`);
   return response.data;
 });
@@ -40,7 +40,7 @@ export const movieSlice = createSlice({
       })
       .addCase(getDataGenres.fulfilled.type, (state, action: PayloadAction<IGenres>) => {
         state.loading = false;
-        state.dataGenres = action.payload;
+        state.dataGenres = action.payload.genres;
       })
       .addCase(getDataGenres.rejected.type, (state, action: PayloadAction<IErrorMessages>) => {
         state.loading = false;

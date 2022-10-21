@@ -1,7 +1,12 @@
-import { FilmIcon } from '@heroicons/react/24/solid';
+import { FilmIcon, Bars3BottomLeftIcon } from '@heroicons/react/24/solid';
 import { Navbar, Dropdown, Avatar } from 'flowbite-react';
 
-export default function NavbarMain(): JSX.Element {
+interface IProps {
+  sidebarShow: boolean;
+  onShowSidebar: (sidebarShow: boolean) => void;
+}
+
+export default function NavbarMain({ sidebarShow, onShowSidebar }: IProps): JSX.Element {
   return (
     <Navbar
       fluid
@@ -10,6 +15,7 @@ export default function NavbarMain(): JSX.Element {
         color: '#3F83F8',
       }}
     >
+      <Bars3BottomLeftIcon className="flex h-5 w-5 md:hidden" onClick={() => onShowSidebar(!sidebarShow)} />
       <Navbar.Brand href="/">
         <FilmIcon className="h-6 w-6" />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Movie List</span>
@@ -21,12 +27,9 @@ export default function NavbarMain(): JSX.Element {
           label={<Avatar alt="User settings" img="https://cdn-icons-png.flaticon.com/512/149/149071.png" rounded />}
         >
           <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">name@flowbite.com</span>
+            <span className="block text-sm">Aditya Himawan</span>
+            <span className="block truncate text-sm font-medium">adityahimaone@gmail.com</span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item>Sign out</Dropdown.Item>
         </Dropdown>
